@@ -8,6 +8,8 @@
     <?php echo $this->_title; ?>
     <?php echo $this->_cssFiles; ?>
     <?php echo $this->_jsFiles; ?>
+
+
 </head>
 
 <body>
@@ -47,8 +49,8 @@
     </div>
 
     <?php
-	require_once APPLICATION_PATH . $this->_moduleName . DS . 'views' . DS . $this->_fileView . '.php';
-	?>
+    require_once APPLICATION_PATH . $this->_moduleName . DS . 'views' . DS . $this->_fileView . '.php';
+    ?>
 
     <div id="footer">
         <p class="copyright">
