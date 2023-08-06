@@ -13,7 +13,15 @@ class GroupController extends Controller
 	// Hiển thị danh sách group
 	public function indexAction()
 	{
-		echo '<h3>' . __METHOD__ . '</h3>';
+		$this->_view->_title = 'User Manager: Group';
+		$this->_model->listItems($this->_arrParam, null);
 		$this->_view->render('group/index');
+	}
+
+	// Hiển thị them group
+	public function addAction()
+	{
+		$this->_view->_title = 'User Manager: Group : ADD';
+		$this->_view->render('group/add');
 	}
 }

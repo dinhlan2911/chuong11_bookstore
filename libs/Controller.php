@@ -21,6 +21,8 @@ class Controller
 		$this->setView($arrParams['module']);
 		$this->setParams($arrParams);
 		$this->_view->arrParams = $arrParams;
+
+		$this->_view->arrParam = $arrParams;
 	}
 
 	// SET MODEL
@@ -76,7 +78,8 @@ class Controller
 		$this->_arrParam = $arrParam;
 	}
 
-	public function redirect($module = 'default',$controller = 'index', $action = 'index'){
+	public function redirect($module = 'default', $controller = 'index', $action = 'index')
+	{
 		header("location: index.php?module=$module&controller=$controller&action=$action");
 		exit();
 	}
