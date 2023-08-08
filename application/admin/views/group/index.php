@@ -82,53 +82,41 @@
 	                    </tr>
 	                </tfoot>
 	                <!-- BODY TABLE -->
+
 	                <tbody>
-	                    <tr class="row0">
-	                        <td class="center">
-	                            <input type="checkbox" id="cb0" name="cid[]" value="17" onclick="javascipt:void(0)">
-	                        </td>
-	                        <td><a href="#">Breadcrumbs</a></td>
-	                        <td class="center">
-	                            <a class="jgrid hasTip" href="javascript:void(0);" onclick="#" title="">
-	                                <span class="state publish">
-	                                    <span class="text">Module enabled and published</span>
-	                                </span>
-	                            </a>
-	                        </td>
-	                        <td class="left">position-2</td>
-	                        <td class="order">
-	                            <input type="text" name="order[]" size="5" value="1" disabled="disabled"
-	                                class="text-area-order">
-	                        </td>
-	                        <td class="left">Breadcrumbs</td>
-	                        <td class="center">All</td>
-	                        <td class="center">Public</td>
-	                        <td class="center">All</td>
-	                        <td class="center">17</td>
-	                    </tr>
-	                    <tr class="row1">
-	                        <td class="center">
-	                            <input type="checkbox" id="cb0" name="cid[]" value="17" onclick="javascipt:void(0)">
-	                        </td>
-	                        <td><a href="#">Breadcrumbs</a></td>
-	                        <td class="center">
-	                            <a class="jgrid hasTip" href="javascript:void(0);" onclick="#" title="">
-	                                <span class="state unpublish">
-	                                    <span class="text">Module enabled and published</span>
-	                                </span>
-	                            </a>
-	                        </td>
-	                        <td class="left">position-2</td>
-	                        <td class="order">
-	                            <input type="text" name="order[]" size="5" value="1" disabled="disabled"
-	                                class="text-area-order">
-	                        </td>
-	                        <td class="left">Breadcrumbs</td>
-	                        <td class="center">All</td>
-	                        <td class="center">Public</td>
-	                        <td class="center">All</td>
-	                        <td class="center">17</td>
-	                    </tr>
+	                    <?php
+						if (!empty($this->Items)) {
+							$i = 0;
+							foreach ($this->Items as $key => $value) {
+								$id 		= $value['id'];
+								$ckb		= '<input type="checkbox" name="cid[]" value="' . $id . '">';
+								$name		= $value['name'];
+								$row		= ($i % 2 == 0) ? 'row0' : 'row1';
+								$status		= Helper::cmsStatus($value['status'], URL::createLink('admin', 'group', 'ajaxStatus', array('id' => $id, 'status' => $value['status'])), $id);
+								$group_acp	= Helper::cmsGroupACP($value['group_acp'], URL::createLink('admin', 'group', 'ajaxACP', array('id' => $id, 'group_acp' => $value['group_acp'])), $id);
+								$ordering	= '<input type="text" name="order[' . $id . ']" size="5" value="' . $value['ordering'] . '" class="text-area-order">';
+								$created	= Helper::formatDate('d-m-Y', $value['created']);
+								$created_by	= $value['created_by'];
+								$modified	= Helper::formatDate('d-m-Y', $value['modified']);
+								$modified_by = $value['modified_by'];
+								$linkEdit	= URL::createLink('admin', 'group', 'form', array('id' => $id));
+
+								echo  '<tr class="' . $row . '">
+		                                	<td class="center">' . $ckb . '</td>
+		                                	<td><a href="' . $linkEdit . '">' . $name . '</a></td>
+			                                <td class="center">' . $status . '</td>
+			                                <td class="center">' . $group_acp . '</td>
+			                                <td class="order">' . $ordering . '</td>
+			                                <td class="center">' . $created . '</td>
+			                                <td class="center">' . $created_by . '</td>
+			                                <td class="center">' . $modified . '</td>
+			                                <td class="center">' . $modified_by . '</td>
+			                                <td class="center">' . $id . '</td>
+			                            </tr>';
+								$i++;
+							}
+						}
+						?>
 	                </tbody>
 	            </table>
 

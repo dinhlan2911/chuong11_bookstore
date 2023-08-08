@@ -14,7 +14,7 @@ class GroupController extends Controller
 	public function indexAction()
 	{
 		$this->_view->_title = 'User Manager: Group';
-		$this->_model->listItems($this->_arrParam, null);
+		$this->_view->Items = $this->_model->listItem($this->_arrParam, null);
 		$this->_view->render('group/index');
 	}
 
@@ -23,5 +23,9 @@ class GroupController extends Controller
 	{
 		$this->_view->_title = 'User Manager: Group : ADD';
 		$this->_view->render('group/add');
+	}
+	public function ajaxStatusAction()
+	{
+		echo __METHOD__;
 	}
 }
