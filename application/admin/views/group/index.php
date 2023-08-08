@@ -93,8 +93,11 @@
 								$name		= $value['name'];
 								$row		= ($i % 2 == 0) ? 'row0' : 'row1';
 								$status		= Helper::cmsStatus($value['status'], URL::createLink('admin', 'group', 'ajaxStatus', array('id' => $id, 'status' => $value['status'])), $id);
+
 								$group_acp	= Helper::cmsGroupACP($value['group_acp'], URL::createLink('admin', 'group', 'ajaxACP', array('id' => $id, 'group_acp' => $value['group_acp'])), $id);
+
 								$ordering	= '<input type="text" name="order[' . $id . ']" size="5" value="' . $value['ordering'] . '" class="text-area-order">';
+
 								$created	= Helper::formatDate('d-m-Y', $value['created']);
 								$created_by	= $value['created_by'];
 								$modified	= Helper::formatDate('d-m-Y', $value['modified']);

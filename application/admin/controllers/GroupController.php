@@ -24,8 +24,17 @@ class GroupController extends Controller
 		$this->_view->_title = 'User Manager: Group : ADD';
 		$this->_view->render('group/add');
 	}
+
+
 	public function ajaxStatusAction()
 	{
-		echo __METHOD__;
+		$result = $this->_model->changeStatus($this->_arrParam, array('task' => 'change-ajax-status'));
+		echo json_encode($result);
+	}
+
+	public function ajaxACPAction()
+	{
+		$result = $this->_model->changeStatus($this->_arrParam, array('task' => 'change-ajax-group-acp'));
+		echo json_encode($result);
 	}
 }
