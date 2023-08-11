@@ -14,7 +14,7 @@
 <?php include_once 'html/header.php'; ?>
 <div id="content-box">
     <?php
-    require_once APPLICATION_PATH . $this->_moduleName . DS . 'views' . DS . $this->_fileView . '.php';
+    require_once MODULE_PATH . $this->_moduleName . DS . 'views' . DS . $this->_fileView . '.php';
     ?>
 </div>
 

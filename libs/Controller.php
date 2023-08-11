@@ -29,7 +29,7 @@ class Controller
 	public function setModel($moduleName, $modelName)
 	{
 		$modelName = ucfirst($modelName) . 'Model';
-		$path = APPLICATION_PATH . $moduleName . DS . 'models' .  DS . $modelName . '.php';
+		$path = MODULE_PATH . $moduleName . DS . 'models' .  DS . $modelName . '.php';
 		if (file_exists($path)) {
 			require_once $path;
 			$this->_model	= new $modelName();

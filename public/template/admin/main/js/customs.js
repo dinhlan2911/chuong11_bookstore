@@ -20,7 +20,18 @@ function changeStatus(url) {
     "json"
   );
 }
-
+function submitForm(url) {
+  $("#adminForm").attr("action", url);
+  $("#adminForm").submit();
+}
+// function submit() {
+//   $("#adminForm").submit();
+// }
+function sortList(column, order) {
+  $("input[name=filter_column]").val(column);
+  $("input[name=filter_column_dir]").val(order);
+  $("#adminForm").submit();
+}
 function changeGroupACP(url) {
   $.get(
     url,
@@ -45,5 +56,25 @@ function changeGroupACP(url) {
 }
 
 $(document).ready(function () {
-  console.log("sdd");
+  $("input[name=checkall-toggle]").change(function () {
+    var checkStatus = this.checked;
+    $("#adminForm")
+      .find(":checkbox")
+      .each(function () {
+        this.checked = checkStatus;
+      });
+  });
+  $("#filter-bar button[name=submit-keyword]").click(function () {
+    $("#adminForm").submit();
+  });
+  $("#filter-bar button[name=clear-keyword]").click(function () {
+    $("#filter-bar input[name=filter_search]").val("");
+    $("#adminForm").submit();
+  });
+  $("#filter-bar select[name=filter_state]").change(function () {
+    $("#adminForm").submit();
+  });
+  $("#filter-bar select[name=filter_group_acp]").change(function () {
+    $("#adminForm").submit();
+  });
 });

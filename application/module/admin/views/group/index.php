@@ -1,6 +1,24 @@
-	<?php require_once 'toolbar/index.php'; ?>
+	<?php
+	include_once 'toolbar/index.php';
 
-	<?php require_once 'submenu/index.php'; ?>
+	include_once 'submenu/index.php';
+
+	// COLUMN 
+	echo '<pre>';
+	print_r($this->arrParam);
+	echo '</pre>';
+	$columnPost		= $this->arrParam['filter_column'];
+	$orderPost		= $this->arrParam['filter_column_dir'];
+	$lblName 		= Helper::cmsLinkSort('Name', 'name', $columnPost, $orderPost);
+	$lblStatus		= Helper::cmsLinkSort('Status', 'status', $columnPost, $orderPost);
+	$lblGroupACP	= Helper::cmsLinkSort('Group ACP', 'group_acp', $columnPost, $orderPost);
+	$lblOrdering	= Helper::cmsLinkSort('Ordering', 'ordering', $columnPost, $orderPost);
+	$lblCreated		= Helper::cmsLinkSort('Created', 'created', $columnPost, $orderPost);
+	$lblCreatedBy	= Helper::cmsLinkSort('Created By', 'created_by', $columnPost, $orderPost);
+	$lblModified	= Helper::cmsLinkSort('Modified', 'modified', $columnPost, $orderPost);
+	$lblModifiedBy	= Helper::cmsLinkSort('Modified By', 'modified_by', $columnPost, $orderPost);
+	$lblID			= Helper::cmsLinkSort('ID', 'id', $columnPost, $orderPost);
+	?>
 
 	<div id="system-message-container">
 	</div>
@@ -41,18 +59,16 @@
 	                <!-- HEADER TABLE -->
 	                <thead>
 	                    <tr>
-	                        <th width="1%">
-	                            <input type="checkbox" name="checkall-toggle" value="" onclick="javascipt:void(0)">
-	                        </th>
-	                        <th class="title"><a href="#">Title</a></th>
-	                        <th width="5%"><a href="#">Status</a></th>
-	                        <th width="15%" class="left"><a href="#"></a></th>
-	                        <th width="10%"><a href="#">Ordering</a> </th>
-	                        <th width="10%" class="left"><a href="#">Type</a> </th>
-	                        <th width="10%"><a href="#">Pages</a> </th>
-	                        <th width="10%"><a href="#">Access</a> </th>
-	                        <th width="5%"><a href="#">Language</a> </th>
-	                        <th width="1%" class="nowrap"><a href="#">ID</a> </th>
+	                        <th width="1%"><input type="checkbox" name="checkall-toggle"></th>
+	                        <th class="title"><?php echo $lblName; ?></th>
+	                        <th width="10%"><?php echo $lblStatus; ?></th>
+	                        <th width="10%"><?php echo $lblGroupACP; ?></th>
+	                        <th width="10%"><?php echo $lblOrdering; ?></th>
+	                        <th width="10%"><?php echo $lblCreated; ?></th>
+	                        <th width="10%"><?php echo $lblCreatedBy; ?></th>
+	                        <th width="10%"><?php echo $lblModified; ?></th>
+	                        <th width="10%"><?php echo $lblModifiedBy; ?></th>
+	                        <th width="1%" class="nowrap"><?php echo $lblID; ?></th>
 	                    </tr>
 	                </thead>
 	                <!-- FOOTER TABLE -->
@@ -124,11 +140,9 @@
 	            </table>
 
 	            <div>
-	                <input type="hidden" name="task" value="">
-	                <input type="hidden" name="boxchecked" value="0">
-	                <input type="hidden" name="filter_order" value="position">
-	                <input type="hidden" name="filter_order_Dir" value="asc">
-	                <input type="hidden" name="2c213a066f29fc07a054763b88737a23" value="1">
+	                <input type="hidden" name="filter_column" value="name">
+	                <input type="hidden" name="filter_column_dir" value="asc">
+	                <!-- <input type="hidden" name="filter_page" value="1"> -->
 	            </div>
 	        </form>
 
