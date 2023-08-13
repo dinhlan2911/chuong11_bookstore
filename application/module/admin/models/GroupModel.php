@@ -12,7 +12,6 @@ class GroupModel extends Model
 	{
 		$query[] = "SELECT `id`, `name`, `group_acp`, `status`, `ordering`, `created`, `created_by`, `modified`, `modified_by`";
 		$query[] = "FROM `$this->_tableName`";
-		$query = implode(" ", $query);
 
 		// SORT
 		if (!empty($arrParam['filter_column']) && !empty($arrParam['filter_column_dir'])) {
@@ -20,9 +19,10 @@ class GroupModel extends Model
 			$columnDir	= $arrParam['filter_column_dir'];
 			$query[]	= "ORDER BY `$column` $columnDir";
 		} else {
-			$query[]	= "ORDER BY `id` DESC";
+			$query[]	= "ORDER BY `name` DESC";
 		}
 
+		$query = implode(" ", $query);
 		$result = $this->listRecord($query);
 		return $result;
 	}

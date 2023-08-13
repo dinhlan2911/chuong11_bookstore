@@ -4,9 +4,6 @@
 	include_once 'submenu/index.php';
 
 	// COLUMN 
-	echo '<pre>';
-	print_r($this->arrParam);
-	echo '</pre>';
 	$columnPost		= $this->arrParam['filter_column'];
 	$orderPost		= $this->arrParam['filter_column_dir'];
 	$lblName 		= Helper::cmsLinkSort('Name', 'name', $columnPost, $orderPost);
