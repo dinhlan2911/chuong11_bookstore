@@ -4,8 +4,8 @@
 	include_once 'submenu/index.php';
 
 	// COLUMN 
-	$columnPost		= $this->arrParam['filter_column'];
-	$orderPost		= $this->arrParam['filter_column_dir'];
+	$columnPost		= @$this->arrParam['filter_column'];
+	$orderPost		= @$this->arrParam['filter_column_dir'];
 	$lblName 		= Helper::cmsLinkSort('Name', 'name', $columnPost, $orderPost);
 	$lblStatus		= Helper::cmsLinkSort('Status', 'status', $columnPost, $orderPost);
 	$lblGroupACP	= Helper::cmsLinkSort('Group ACP', 'group_acp', $columnPost, $orderPost);
@@ -15,6 +15,11 @@
 	$lblModified	= Helper::cmsLinkSort('Modified', 'modified', $columnPost, $orderPost);
 	$lblModifiedBy	= Helper::cmsLinkSort('Modified By', 'modified_by', $columnPost, $orderPost);
 	$lblID			= Helper::cmsLinkSort('ID', 'id', $columnPost, $orderPost);
+
+
+	$arrStatus			= array('default' => '- Select Status -', 1 => 'Publish',  0 => 'Unpublish');
+	$selectboxStatus	= Helper::cmsSelectbox('filter_state', 'inputbox', $arrStatus, $this->arrParam['filter_state']);
+
 	?>
 
 	<div id="system-message-container">
@@ -27,27 +32,14 @@
 	            <fieldset id="filter-bar">
 	                <div class="filter-search fltlft">
 	                    <label class="filter-search-lbl" for="filter_search">Filter:</label>
-	                    <input type="text" name="filter_search" id="filter_search" value=""
-	                        title="Search in module title.">
-	                    <button type="submit">Search</button>
-	                    <button type="button" onclick="javascipt:void(0)">Clear</button>
+	                    <input type="text" name="filter_search" id="filter_search"
+	                        value="<?php echo @$this->arrParam['filter_search'] ?>">
+	                    <button type="submit" name="submit-keyword">Search</button>
+	                    <button type="button" name="clear-keyword">Clear</button>
 	                </div>
+
 	                <div class="filter-select fltrt">
-	                    <select name="filter_client_id" class="inputbox" onchange="#">
-	                        <option value="0" selected="selected">Site</option>
-	                    </select>
-	                    <select name="filter_state" class="inputbox" onchange="#">
-	                        <option value="">- Select Status -</option>
-	                    </select>
-	                    <select name="filter_module" class="inputbox" onchange="#">
-	                        <option value="">- Select Type -</option>
-	                    </select>
-	                    <select name="filter_access" class="inputbox" onchange="#">
-	                        <option value="">- Select Access -</option>
-	                    </select>
-	                    <select name="filter_language" class="inputbox" onchange="#">
-	                        <option value="">- Select Language -</option>
-	                    </select>
+	                    <?php echo $selectboxStatus; ?>
 	                </div>
 	            </fieldset>
 	            <div class="clr"> </div>

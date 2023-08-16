@@ -67,13 +67,16 @@ $(document).ready(function () {
   $("#filter-bar button[name=submit-keyword]").click(function () {
     $("#adminForm").submit();
   });
+
   $("#filter-bar button[name=clear-keyword]").click(function () {
     $("#filter-bar input[name=filter_search]").val("");
     $("#adminForm").submit();
   });
+
   $("#filter-bar select[name=filter_state]").change(function () {
     $("#adminForm").submit();
   });
+
   $("#filter-bar select[name=filter_group_acp]").change(function () {
     $("#adminForm").submit();
   });
