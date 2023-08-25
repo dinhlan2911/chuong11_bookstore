@@ -14,13 +14,22 @@ class Controller
 	// Params (GET - POST)
 	protected $_arrParam;
 
+	//Pagination
+	protected $_pagination	= array(
+		'totalItemsPerPage'	=> 3,
+		'pageRange'			=> 2,
+	);
+
+
 	public function __construct($arrParams)
 	{
 		$this->setModel($arrParams['module'], $arrParams['controller']);
 		$this->setTemplate($this);
 		$this->setView($arrParams['module']);
+
+		$this->_pagination['currentPage']	= (isset($arrParams['filter_page'])) ? $arrParams['filter_page'] : 1;
+		$arrParams['pagination'] = $this->_pagination;
 		$this->setParams($arrParams);
-		$this->_view->arrParams = $arrParams;
 
 		$this->_view->arrParam = $arrParams;
 	}

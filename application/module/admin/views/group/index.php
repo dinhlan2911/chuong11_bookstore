@@ -20,6 +20,11 @@
 	$arrStatus			= array('default' => '- Select Status -', 1 => 'Publish',  0 => 'Unpublish');
 	$selectboxStatus	= Helper::cmsSelectbox('filter_state', 'inputbox', $arrStatus, $this->arrParam['filter_state']);
 
+	// Pagination
+	$paginationHTML        = $this->pagination->showPagination(URL::createLink('admin', 'group', 'index'));
+
+
+
 	?>
 
 	<div id="system-message-container">

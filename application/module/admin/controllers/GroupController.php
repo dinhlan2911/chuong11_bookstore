@@ -13,12 +13,17 @@ class GroupController extends Controller
 	// Hiển thị danh sách group
 	public function indexAction()
 	{
-		$this->_view->_title = 'User Manager: Group';
-		$this->_view->Items = $this->_model->listItem($this->_arrParam, null);
+		$this->_view->_title 		= 'User Manager: User Groups';
+		$totalItems					= $this->_model->countItem($this->_arrParam, null);
+
+		$configPagination = array('totalItemsPerPage'	=> 5, 'pageRange' => 3);
+		$this->setPagination($configPagination);
+		$this->_view->pagination	= new Pagination($totalItems, $this->_pagination);
+		$this->_view->Items 		= $this->_model->listItem($this->_arrParam, null);
 		$this->_view->render('group/index');
 	}
 
-	// Hiển thị them group
+	// Hiển thị them group 
 	public function addAction()
 	{
 		$this->_view->_title = 'User Manager: Group : ADD';
