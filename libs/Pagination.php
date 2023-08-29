@@ -22,6 +22,7 @@ class Pagination
 
 	public function showPagination($link)
 	{
+		echo $this->totalPage;
 		// Pagination
 		$paginationHTML = '';
 		if ($this->totalPage > 1) {

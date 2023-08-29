@@ -72,7 +72,7 @@
 	                            <!-- PAGINATION -->
 	                            <div class="container">
 	                                <div class="pagination">
-	                                    <div class="button2-right off">
+	                                    <!-- <div class="button2-right off">
 	                                        <div class="start"><span>Start</span></div>
 	                                    </div>
 	                                    <div class="button2-right off">
@@ -84,7 +84,9 @@
 	                                    <div class="button2-left">
 	                                        <div class="next"><a href="#">End</a></div>
 	                                    </div>
-	                                    <div class="limit">Page 1 of 2</div>
+	                                    <div class="limit">Page 1 of 2</div> -->
+
+	                                    <?php echo $paginationHTML; ?>
 	                                    <input type="hidden" name="limitstart" value="0">
 	                                </div>
 	                            </div>
@@ -136,7 +138,7 @@
 	            <div>
 	                <input type="hidden" name="filter_column" value="name">
 	                <input type="hidden" name="filter_column_dir" value="asc">
-	                <!-- <input type="hidden" name="filter_page" value="1"> -->
+	                <input type="hidden" name="filter_page" value="1">
 	            </div>
 	        </form>
 

@@ -24,14 +24,17 @@ function submitForm(url) {
   $("#adminForm").attr("action", url);
   $("#adminForm").submit();
 }
-// function submit() {
-//   $("#adminForm").submit();
-// }
+
 function sortList(column, order) {
   $("input[name=filter_column]").val(column);
   $("input[name=filter_column_dir]").val(order);
   $("#adminForm").submit();
 }
+
+function changePage(page) {
+  console.log(page);
+}
+
 function changeGroupACP(url) {
   $.get(
     url,

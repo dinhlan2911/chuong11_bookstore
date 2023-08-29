@@ -92,4 +92,12 @@ class Controller
 		header("location: index.php?module=$module&controller=$controller&action=$action");
 		exit();
 	}
+	// SET PAGINATION
+	public function setPagination($config)
+	{
+		$this->_pagination['totalItemsPerPage'] = $config['totalItemsPerPage'];
+		$this->_pagination['pageRange']			= $config['pageRange'];
+		$this->_arrParam['pagination']			= $this->_pagination;
+		$this->_view->arrParam					= $this->_arrParam;
+	}
 }
