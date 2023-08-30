@@ -32,7 +32,8 @@ function sortList(column, order) {
 }
 
 function changePage(page) {
-  console.log(page);
+  $("input[name=filter_page]").val(page);
+  $("#adminForm").submit();
 }
 
 function changeGroupACP(url) {

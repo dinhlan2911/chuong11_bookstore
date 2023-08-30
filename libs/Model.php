@@ -209,6 +209,7 @@ class Model
 	// SINGLE RECORD : chạy câu query để nó trả về 1 array của 1 dòng
 	public function singleRecord($query)
 	{
+
 		$result = array();
 		if (!empty($query)) {
 			$resultQuery = $this->query($query);

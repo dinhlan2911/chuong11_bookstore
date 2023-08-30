@@ -18,7 +18,7 @@ class GroupModel extends Model
 		$flagWhere 	= false;
 		if (!empty($arrParam['filter_search'])) {
 			$keyword	= '"%' . $arrParam['filter_search'] . '%"';
-			$query[]	= "WHERE `name` LIK  E $keyword";
+			$query[]	= "WHERE `name` LIKE $keyword";
 			$flagWhere 	= true;
 		}
 
